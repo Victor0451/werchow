@@ -28,6 +28,7 @@ import ImprimirSolicitud from "./ficha/ImprimirSolicitud";
 
 //REDUX
 import { Provider } from "react-redux";
+import CambioGrupo from "./ficha/CambioGrupo";
 
 const token = sessionStorage.getItem("token");
 
@@ -120,6 +121,13 @@ export default class Router extends Component {
                 path={"/ficha/cambiotitular/:id"}
                 component={CambioTitular}
               />
+
+              <Route
+                exact
+                path={"/ficha/cambiogrupo"}
+                component={CambioGrupo}
+              />
+
               <Route
                 exact
                 path={"/ficha/bajaadherente"}

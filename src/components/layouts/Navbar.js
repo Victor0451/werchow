@@ -108,6 +108,15 @@ class Navbar extends Component {
                 <hr />
 
                 <Link
+                  to="/ficha/cambiogrupo"
+                  className="dropdown-item text-dark"
+                >
+                  Cambio de Grupo
+                </Link>
+
+                <hr />
+
+                <Link
                   to="/ficha/bajaadherente"
                   className="dropdown-item text-dark"
                 >
