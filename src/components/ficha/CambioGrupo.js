@@ -68,12 +68,16 @@ class CambioGrupo extends Component {
 
         setTimeout(() => {
           const { titular } = this.props;
+          if (!titular) {
+            toastr.warning(
+              "El numero de socio ingresado no existe",
+              "ATENCION"
+            );
+          } else {
+            this.setState({
+              titular: titular
+            });
 
-          this.setState({
-            titular: titular
-          });
-
-          if (titular) {
             document.getElementById("busqueda").hidden = true;
             document.getElementById("cambio").hidden = false;
           }
@@ -105,9 +109,9 @@ class CambioGrupo extends Component {
     const { GRUPO, contrato } = this.state;
 
     const cambioGrupo = {
-        GRUPO,
-        CONTRATO: contrato
-    }
+      GRUPO,
+      CONTRATO: contrato
+    };
 
     confirmAlert({
       title: "Atencion",
@@ -119,10 +123,8 @@ class CambioGrupo extends Component {
             this.props.cambioGrupo(cambioGrupo);
 
             setTimeout(() => {
-                this.historialGrupo()
+              this.historialGrupo();
             }, 100);
-
-            
           }
         },
 

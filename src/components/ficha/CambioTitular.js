@@ -42,11 +42,14 @@ class CambiarTitular extends Component {
 
       setTimeout(() => {
         const { titular, adherentes } = this.props;
-
-        this.setState({
-          titular: titular,
-          adherentes: adherentes
-        });
+        if (!titular) {
+          toastr.warning("El numero de socio ingresado no existe", "ATENCION");
+        } else {
+          this.setState({
+            titular: titular,
+            adherentes: adherentes
+          });
+        }
       }, 150);
     }
   };
@@ -66,15 +69,21 @@ class CambiarTitular extends Component {
 
         setTimeout(() => {
           const { titular, adherentes } = this.props;
+          if (!titular) {
+            toastr.warning(
+              "El numero de socio ingresado no existe",
+              "ATENCION"
+            );
+          } else {
+            this.setState({
+              titular: titular,
+              adherentes: adherentes
+            });
 
-          this.setState({
-            titular: titular,
-            adherentes: adherentes
-          });
-
-          if (titular) {
-            document.getElementById("busqueda").hidden = true;
-            document.getElementById("cambio").hidden = false;
+            if (titular) {
+              document.getElementById("busqueda").hidden = true;
+              document.getElementById("cambio").hidden = false;
+            }
           }
         }, 150);
       }

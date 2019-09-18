@@ -64,14 +64,21 @@ class BajaAdherente extends Component {
         setTimeout(() => {
           const { titular, adherentes } = this.props;
 
-          this.setState({
-            titular: titular,
-            adherentes: adherentes
-          });
+          if (!titular) {
+            toastr.warning(
+              "El numero de socio ingresado no existe",
+              "ATENCION"
+            );
+          } else {
+            this.setState({
+              titular: titular,
+              adherentes: adherentes
+            });
 
-          if (adherentes) {
-            document.getElementById("busqueda").hidden = true;
-            document.getElementById("baja").hidden = false;
+            if (adherentes) {
+              document.getElementById("busqueda").hidden = true;
+              document.getElementById("baja").hidden = false;
+            }
           }
         }, 150);
       }

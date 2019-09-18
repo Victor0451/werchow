@@ -40,11 +40,14 @@ class BajaFicha extends Component {
 
       setTimeout(() => {
         const { titular, adherentes } = this.props;
-
-        this.setState({
-          titular: titular,
-          adherentes: adherentes
-        });
+        if (!titular) {
+          toastr.warning("El numero de socio ingresado no existe", "ATENCION");
+        } else {
+          this.setState({
+            titular: titular,
+            adherentes: adherentes
+          });
+        }
       }, 150);
     }
   };
@@ -63,15 +66,21 @@ class BajaFicha extends Component {
 
         setTimeout(() => {
           const { titular, adherentes } = this.props;
+          if (!titular) {
+            toastr.warning(
+              "El numero de socio ingresado no existe",
+              "ATENCION"
+            );
+          } else {
+            this.setState({
+              titular: titular,
+              adherentes: adherentes
+            });
 
-          this.setState({
-            titular: titular,
-            adherentes: adherentes
-          });
-
-          if (adherentes) {
-            document.getElementById("busqueda").hidden = true;
-            document.getElementById("baja").hidden = false;
+            if (adherentes) {
+              document.getElementById("busqueda").hidden = true;
+              document.getElementById("baja").hidden = false;
+            }
           }
         }, 150);
       }
@@ -86,7 +95,7 @@ class BajaFicha extends Component {
 
     const historia = {
       CONTRATO: this.state.contrato,
-      OPERADOR: user.usuario, 
+      OPERADOR: user.usuario,
       ANTERIOR: "FICHA ACTIVA",
       NUEVO: "BAJA DE FICHA",
       FECHA: fecha

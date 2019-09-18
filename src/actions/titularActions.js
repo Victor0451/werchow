@@ -56,6 +56,42 @@ export const mostrarTitular = id => async dispatch => {
     });
 };
 
+export const mostrarTitularApellido = apellido => async dispatch => {
+  await axios
+    .get(
+      `http://190.231.32.232:5002/api/werchow/maestro/titularapellido/${apellido}`
+    )
+
+    .then(res =>
+      dispatch({
+        type: MOSTRAR_TITULAR,
+        payload: res.data
+      })
+    )
+
+    .catch(err => {
+      console.log(err);
+      toastr.warning("El N° de Socio ingresado no existe", "ATENCION");
+    });
+};
+
+export const mostrarTitularDNI = dni => async dispatch => {
+  await axios
+    .get(`http://190.231.32.232:5002/api/werchow/maestro/dni/${dni}`)
+
+    .then(res =>
+      dispatch({
+        type: MOSTRAR_TITULAR,
+        payload: res.data
+      })
+    )
+
+    .catch(err => {
+      console.log(err);
+      toastr.warning("El N° de Socio ingresado no existe", "ATENCION");
+    });
+};
+
 export const bajaTitular = id => async dispatch => {
   await axios
     .put(`http://190.231.32.232:5002/api/werchow/maestro/baja/${id}`, id)
