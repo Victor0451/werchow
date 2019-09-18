@@ -171,35 +171,11 @@ class BuscarTitular extends Component {
           </div>
         </form>
 
-        {titularesApe ? (
-          <div
-            className="modal fade bd-example-modal-xl"
-            role="dialog"
-            aria-labelledby="myExtraLargeModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-xl">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h3 className="modal-title" id="exampleModalLabel">
-                    <strong>
-                      <u>Listado de Titulares</u>
-                    </strong>
-                  </h3>
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <ListadoApellidoTit titulares={titularesApe} />
-              </div>
-            </div>
-          </div>
-        ) : !titularesApe ? null : null}
+        {Object.entries(titularesApe).length === 0 ? (
+          ""
+        ) : titularesApe ? (
+          <ListadoApellidoTit titulares={titularesApe} />
+        ) : null}
 
         <hr className="mt-4" />
 

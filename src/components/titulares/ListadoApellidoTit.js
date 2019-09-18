@@ -41,6 +41,12 @@ export default class ListadoApellidoTit extends Component {
     });
   }
 
+  to = index => {
+    // const { titulares } = this.props;
+    // if (index)
+    //   return <Redirect to={`/titulares/${titulares[index].CONTRATO}`} />;
+  };
+
   render() {
     let { currentPage, todosPerPage } = this.state;
     let { titulares } = this.props;
@@ -61,7 +67,8 @@ export default class ListadoApellidoTit extends Component {
 
     return (
       <React.Fragment>
-        <div className="row container">
+        <hr />
+        <div className="row container mt-4 ">
           <div className="col-md-12 p-2">
             <ul>
               <table className="table table-hover">
@@ -92,7 +99,7 @@ export default class ListadoApellidoTit extends Component {
 
                       <td>
                         <Link
-                          to={`/titulares/${titular.CONTRATO}`}
+                          to={`/titulares/${titulares[index].CONTRATO}`}
                           className="btn btn-primary"
                         >
                           Ver Ficha
