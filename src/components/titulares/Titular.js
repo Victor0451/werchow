@@ -10,7 +10,11 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 //redux
 import { connect } from "react-redux";
-import { mostrarTitular, bajaTitular } from "../../actions/titularActions";
+import {
+  mostrarTitular,
+  bajaTitular,
+  mostrarCuota
+} from "../../actions/titularActions";
 import { mostrarPagosTitular } from "../../actions/pagosActions";
 import { mostrarPagobcoTitular } from "../../actions/pagobcoActions";
 
@@ -19,7 +23,8 @@ class Titular extends Component {
     titular: {},
     pagos: {},
     pagobco: {},
-    allPagos: {}
+    allPagos: {},
+    cuota: ""
   };
 
   componentDidMount() {
@@ -29,10 +34,12 @@ class Titular extends Component {
     this.props.mostrarPagosTitular(id);
 
     this.props.mostrarPagobcoTitular(id);
+
+    this.props.mostrarCuota(id);
   }
 
   componentWillReceiveProps(nextProps, nextState) {
-    const { titular, pagos, pagobco, memo } = nextProps;
+    const { titular, pagos, pagobco, memo, cuota } = nextProps;
 
     if (titular) {
       if (titular.GRUPO < 3000) {
@@ -52,7 +59,8 @@ class Titular extends Component {
       titular: titular,
       pagos: pagos,
       pagobco: pagobco,
-      memo: memo
+      memo: memo,
+      cuota: cuota
     });
   }
 
@@ -81,7 +89,9 @@ class Titular extends Component {
   };
 
   render() {
-    const { titular, pagos, pagobco, allPagos } = this.state;
+    const { titular, pagos, pagobco, allPagos, cuota } = this.state;
+
+    //const { cuota } = this.props;
 
     if (!titular) return <Spinner />;
 
@@ -128,7 +138,7 @@ class Titular extends Component {
             </div>
           </div>
 
-          <InfoTitular titular={titular} />
+          <InfoTitular titular={titular} cuota={cuota} />
         </div>
 
         <hr className="my-4" />
@@ -273,11 +283,15 @@ class Titular extends Component {
 //state
 const mapStateToProps = state => ({
   titular: state.titulares.titular,
+  cuota: state.titulares.cuota,
   pagos: state.pagos.pagos,
   pagobco: state.pagobco.pagobco
 });
 
-export default connect(
-  mapStateToProps,
-  { mostrarTitular, mostrarPagobcoTitular, mostrarPagosTitular, bajaTitular }
-)(Titular);
+export default connect(mapStateToProps, {
+  mostrarTitular,
+  mostrarPagobcoTitular,
+  mostrarPagosTitular,
+  bajaTitular,
+  mostrarCuota
+})(Titular);

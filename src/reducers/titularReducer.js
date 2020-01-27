@@ -4,7 +4,8 @@ import {
   AGREGAR_TITULAR,
   ULTIMO_CONTRATO_TITULAR,
   EDITAR_TITULAR,
-  BAJA_TITULAR
+  BAJA_TITULAR,
+  MOSTRAR_CUOTA
 } from "../actions/types";
 
 //CADA REDUCER TIENE SU ṔROPIO STATE
@@ -25,6 +26,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         titular: action.payload
+      };
+
+    case MOSTRAR_CUOTA:
+      return {
+        ...state,
+        cuota: action.payload
       };
 
     case ULTIMO_CONTRATO_TITULAR:

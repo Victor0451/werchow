@@ -130,34 +130,6 @@ class Navbar extends Component {
                 </Link>
               </div>
             </li>
-
-            {isAuthenticated && user.perfil === 1 ? (
-              <li className="nav-item dropdown">
-                <Link
-                  to=""
-                  className="nav-link dropdown-toggle"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Usuarios{" "}
-                </Link>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link to="/register" className="dropdown-item text-dark">
-                    Registrar Usuario
-                  </Link>
-
-                  <hr />
-
-                  <Link to="/edit" className="dropdown-item text-dark">
-                    Modificacion de Usuario
-                  </Link>
-                </div>
-              </li>
-            ) : (
-              ""
-            )}
           </ul>
         </div>
 
@@ -210,7 +182,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  null
-)(Navbar);
+export default connect(mapStateToProps, null)(Navbar);

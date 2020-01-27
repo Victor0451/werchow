@@ -4,7 +4,8 @@ import {
   AGREGAR_TITULAR,
   ULTIMO_CONTRATO_TITULAR,
   EDITAR_TITULAR,
-  BAJA_TITULAR
+  BAJA_TITULAR,
+  MOSTRAR_CUOTA
 } from "./types";
 
 import axios from "axios";
@@ -152,5 +153,24 @@ export const editarTitular = titularModf => async dispatch => {
       console.log(err);
       toastr.error("Algo salio mal, no se registraron los cambios", "ATENCION");
       window.history.back();
+    });
+};
+
+export const mostrarCuota = id => async dispatch => {
+  await axios
+    .get(`http://190.231.32.232:5002/api/werchow/maestro/cuota/${id}`)
+    .then(res =>
+      dispatch({
+        type: MOSTRAR_CUOTA,
+        payload: res.data
+      })
+    )
+
+    .catch(err => {
+      console.log(err);
+      toastr.error(
+        "Algo salio mal, no se puede mostrar los socios, comunicate con sistemas ",
+        "ATENCION"
+      );
     });
 };
