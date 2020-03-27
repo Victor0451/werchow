@@ -38,8 +38,8 @@ class BuscarTitular extends Component {
           const { titular } = this.props;
 
           if (titular) {
-              //this.props.history.push(`/titulares/${titular.CONTRATO}`);
-              window.location.href = `/titulares/${titular.CONTRATO}`;
+            //this.props.history.push(`/titulares/${titular.CONTRATO}`);
+            window.location.href = `/titulares/${titular.CONTRATO}`;
           }
           if (!titular) {
             toastr.warning(

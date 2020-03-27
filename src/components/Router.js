@@ -36,6 +36,9 @@ if (token) {
   store.dispatch({ type: USER_LOGEDED });
 }
 
+
+
+
 export default class Router extends Component {
   render() {
     return (
@@ -153,12 +156,12 @@ export default class Router extends Component {
               />
             </Switch>
           ) : (
-            <Switch>
-              {/* AUTH */}
-              <Route exact path={"/login"} component={Login} />
-              <Redirect to={"/login"} />
-            </Switch>
-          )}
+              <Switch>
+                {/* AUTH */}
+                <Route exact path={"/login"} component={Login} />
+                <Redirect to={"/login"} />
+              </Switch>
+            )}
         </BrowserRouter>
       </Provider>
     );

@@ -21,7 +21,7 @@ class Login extends Component {
       } else {
         this.setState({ msg: null });
       }
-    }   
+    }
   }
 
   onChange = e => {
@@ -41,12 +41,15 @@ class Login extends Component {
     // Attempt to login
     this.props.login(user);
 
+
     setTimeout(() => {
-      if (this.props.isAuthenticated === true) {
-        window.location.replace("/");
-      }
-    }, 200);
+
+      window.location.replace("/");
+
+    }, 400);
   };
+
+
 
   render() {
     return (

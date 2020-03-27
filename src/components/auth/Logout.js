@@ -13,7 +13,7 @@ class Logout extends Component {
 
   logOuts = () => {
     this.props.logout();
-    window.location.replace("/");
+    window.location.reload();
   };
 
   render() {

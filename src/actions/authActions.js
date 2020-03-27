@@ -88,7 +88,7 @@ export const register = ({
 
 //LOGIN
 
-export const login = ({ usuario, contrasena }) => dispatch => {
+export const login = ({ usuario, contrasena }) => async dispatch => {
   //headers
   const config = {
     headers: {
@@ -100,13 +100,14 @@ export const login = ({ usuario, contrasena }) => dispatch => {
 
   const body = JSON.stringify({ usuario, contrasena });
 
-  axios
+  await axios
     .post("http://190.231.32.232:5002/api/sgi/auth/auth", body, config)
     .then(res =>
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
-      })
+      }),
+    
     )
     .catch(err => {
       dispatch(
@@ -121,8 +122,10 @@ export const login = ({ usuario, contrasena }) => dispatch => {
 //LOGOUT
 
 export const logout = () => {
+
   return {
-    type: LOGOUT_SUCCESS
+    type: LOGOUT_SUCCESS,
+
   };
 };
 

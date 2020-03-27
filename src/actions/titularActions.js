@@ -40,8 +40,8 @@ export const ultimoContrato = () => async dispatch => {
   });
 };
 
-export const mostrarTitular = id => async dispatch => {
-  await axios
+export const mostrarTitular = id =>  dispatch => {
+   axios
     .get(`http://190.231.32.232:5002/api/werchow/maestro/titular/${id}`)
 
     .then(res =>

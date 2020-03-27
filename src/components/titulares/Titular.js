@@ -82,16 +82,22 @@ class Titular extends Component {
 
         {
           label: "No",
-          onClick: () => {}
+          onClick: () => { }
         }
       ]
     });
   };
 
+  atras = () => {
+    window.location.href = '/'
+  }
+
   render() {
     const { titular, pagos, pagobco, allPagos, cuota } = this.state;
 
     //const { cuota } = this.props;
+
+    console.log(this.props);
 
     if (!titular) return <Spinner />;
 
@@ -101,9 +107,9 @@ class Titular extends Component {
       <div className="container mt-4">
         <div className="row">
           <div className="col-md-6 mb-4">
-            <Link to="/titulares" className="btn btn-secondary">
+            <Link to="#" className="btn btn-secondary" onClick={this.atras}>
               <i className="fas fa-arrow-circle-left"></i> {""}
-              Volver al Listado
+             Buscar Titular
             </Link>
           </div>
         </div>
@@ -122,12 +128,12 @@ class Titular extends Component {
               </h5>
             </div>
           ) : (
-            <div className="row mt-4 alert alert-warning justify-content-center">
-              <h5 className="text-center">
-                <strong>ERROR</strong>{" "}
-              </h5>
-            </div>
-          )}
+                <div className="row mt-4 alert alert-warning justify-content-center">
+                  <h5 className="text-center">
+                    <strong>ERROR</strong>{" "}
+                  </h5>
+                </div>
+              )}
 
           <div className="row">
             <div className="col-md-12">
@@ -203,24 +209,24 @@ class Titular extends Component {
                       Consultar Prestamos
                     </Link>
                   ) : (
-                    ""
-                  )}
+                      ""
+                    )}
                 </div>
               </div>
             ) : (
-              <div
-                className="btn-group col-md-12 d-flex justify-content-center"
-                role="group"
-                aria-label="Button group with nested dropdown"
-              >
-                <Link
-                  to={`/titulares/historia/${titular.CONTRATO}`}
-                  className="btn btn-info col-md-3 mr-1"
+                <div
+                  className="btn-group col-md-12 d-flex justify-content-center"
+                  role="group"
+                  aria-label="Button group with nested dropdown"
                 >
-                  Ultimas Modificaciones
+                  <Link
+                    to={`/titulares/historia/${titular.CONTRATO}`}
+                    className="btn btn-info col-md-3 mr-1"
+                  >
+                    Ultimas Modificaciones
                 </Link>
-              </div>
-            )}
+                </div>
+              )}
           </div>
         </div>
 
@@ -238,8 +244,8 @@ class Titular extends Component {
               <i className="fas fa-hand-holding-usd"> No Registra Pagos</i>{" "}
             </h1>
           ) : (
-            <AllPagos pagos={pagos} pagobco={pagobco} allPagos={allPagos} />
-          )}
+              <AllPagos pagos={pagos} pagobco={pagobco} allPagos={allPagos} />
+            )}
 
           <hr className="my-4" />
 
